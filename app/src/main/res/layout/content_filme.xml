@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".FilmeActivity"
+    tools:showIn="@layout/activity_filme">
+
+    <android.support.v7.widget.CardView android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="400dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:elevation="7dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <ImageView
+                android:id="@+id/filme_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/filmeinterstellar"
+                android:layout_weight="3"/>
+
+            <TextView
+                android:id="@+id/filme_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Filme Interestellar"
+                android:textSize="25sp"
+                android:textColor="#ff8888"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/filme_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thumb do filme Interestellar"
+                android:layout_marginLeft="10dp"
+                android:textSize="15sp"
+                android:layout_weight="0.5"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="3"
+                android:weightSum="3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="inicio"
+                    android:textColor="#ff8888"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="erendo"
+                    android:textColor="#ff8888"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="elenco"
+                    android:textColor="#ff8888"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
