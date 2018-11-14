@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         newTitle = addItemDialog.findViewById(R.id.new_title);
-        newDescription = findViewById(R.id.new_description);
+        newDescription = addItemDialog.findViewById(R.id.new_description);
 
         saveButton = addItemDialog.findViewById(R.id.salvar);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -98,12 +98,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void saveNewItem() {
-        if(newTitle.getText() .toString().isEmpty() || newDescription.getText().toString().isEmpty()) {
-            Toast.makeText(MainActivity.this, "Os campos nao podem estar nulos", Toast.LENGTH_LONG).show();
+        if(newTitle.getText().toString().isEmpty() || newDescription.getText().toString().isEmpty()) {
+            Toast.makeText(MainActivity.this, "Os campos nao podem estar vazios", Toast.LENGTH_LONG).show();
         } else {
             String title = newTitle.getText().toString();
             String description = newDescription.getText().toString();
-            adapter.filmes.add(new Filme(title, description, path));
+            adapter.filmes.add(new Filme(path, title, description));
             adapter.notifyDataSetChanged();
             path = null;
             addItemDialog.dismiss();
