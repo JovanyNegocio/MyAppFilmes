@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        addItemDialog.show();
 
     }
 
