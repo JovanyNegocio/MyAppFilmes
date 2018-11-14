@@ -1,22 +1,14 @@
 package com.jovanyguiagmail.myapplication;
 
 public class Filme {
-    int res;
+    String path;
     String name;
     String description;
 
-    public Filme(int res, String name, String description) {
-        this.res = res;
+    public Filme(String path, String name, String description) {
+        this.path = path;
         this.name = name;
         this.description = description;
-    }
-
-    public int getRes() {
-        return res;
-    }
-
-    public void setRes(int res) {
-        this.res = res;
     }
 
     public String getName() {
@@ -29,6 +21,14 @@ public class Filme {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public void setDescription(String description) {

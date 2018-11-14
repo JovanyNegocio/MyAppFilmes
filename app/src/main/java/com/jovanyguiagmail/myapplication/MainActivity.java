@@ -18,9 +18,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     EditText newTitle;
     EditText newDescription;
     Button saveButton;
+    String path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +80,35 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        newTitle = addItemDialog.findViewById(R.id.new_title);
+        newDescription = findViewById(R.id.new_description);
+
+        saveButton = addItemDialog.findViewById(R.id.salvar);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveNewItem();
+            }
+        });
+
+        addItemDialog.setTitle("Adicionar novo item");
         addItemDialog.show();
 
+    }
+
+    public void saveNewItem() {
+        if(newTitle.getText() .toString().isEmpty() || newDescription.getText().toString().isEmpty()) {
+            Toast.makeText(MainActivity.this, "Os campos nao podem estar nulos", Toast.LENGTH_LONG).show();
+        } else {
+            String title = newTitle.getText().toString();
+            String description = newDescription.getText().toString();
+            adapter.filmes.add(new Filme(title, description, path));
+            adapter.notifyDataSetChanged();
+            path = null;
+            addItemDialog.dismiss();
+
+        }
     }
 
     public boolean isStoregePermissionGranted() {
@@ -90,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
         if (data != null) {
             Uri uri = data.getData();
             Log.i( "MainActivity", "Localizacao do ficheiro: " + uri.getPath());
-            String path = getRealPathFromURI(uri);
+            path = getRealPathFromURI(uri);
             File file = new File(path);
-            // Picasso.get().load(file).into(newImage);
+            Picasso.get().load(file).into(newImage);
         }
     }
 

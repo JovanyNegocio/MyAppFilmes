@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +24,6 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.FilmeViewHol
     public FilmeAdapter(Context context) {
         this.mContext = context;
         filmes = new ArrayList<>();
-        filmes.add(new Filme(R.drawable.interstellar, "interstellar", "uma capa do filme interstellar"));
-        filmes.add(new Filme(R.drawable.freestateofjones, "free state of jones", "uma capa do filme free state of jones"));
-        filmes.add(new Filme(R.drawable.gonegirl, "gone girl", "uma capa do filme gone girl"));
-        filmes.add(new Filme(R.drawable.straightouttacompton, "straight outta compton", "capa do filme straight outta compton"));
     }
 
     @NonNull
@@ -37,7 +36,8 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.FilmeViewHol
     @Override
     public void onBindViewHolder(@NonNull final FilmeViewHolder holder, int position) {
         final Filme filme = filmes.get(position);
-        holder.filmeimage.setImageResource(filme.getRes());
+
+        Picasso.get().load(new File(filme.path)).into(holder.filmeimage);
         holder.filmename.setText(filme.getName());
         holder.filmedescription.setText(filme.getDescription());
         holder.filmeimage.setOnClickListener(new View.OnClickListener() {
@@ -68,10 +68,10 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.FilmeViewHol
 
         public void openActivity(Filme filme) {
             Intent intent = new Intent(mContext, FilmeActivity.class);
-            intent.putExtra("filme_image", filme.res);
+            intent.putExtra("filme_name", filme.getName());
             intent.putExtra("filme_description", filme.getDescription());
-            intent.putExtra("filme_image",filme.getRes());
-            mContext.startActivity(intent);
+            //intent.putExtra("filme_image",filme.getRes());
+            //mContext.startActivity(intent);
         }
     }
 
