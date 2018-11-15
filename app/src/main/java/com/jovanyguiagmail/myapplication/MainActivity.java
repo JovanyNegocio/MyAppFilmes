@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             String description = newDescription.getText().toString();
             adapter.filmes.add(new Filme(path, title, description));
             adapter.notifyDataSetChanged();
+            FilmeSharedPreferences.saveFilmeList(adapter.filmes, MainActivity.this, "filmes");
             path = null;
             addItemDialog.dismiss();
 

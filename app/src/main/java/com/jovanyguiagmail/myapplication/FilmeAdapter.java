@@ -24,6 +24,10 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.FilmeViewHol
     public FilmeAdapter(Context context) {
         this.mContext = context;
         filmes = new ArrayList<>();
+        List<Filme> savedList = FilmeSharedPreferences.loadFilmeList(context, "filmes");
+        if (savedList != null) {
+            filmes.addAll(savedList);
+        }
     }
 
     @NonNull
